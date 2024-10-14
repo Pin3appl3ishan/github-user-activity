@@ -1,0 +1,58 @@
+Index: src/main/java/com/twitter/Main.java
+===================================================================
+diff --git a/src/main/java/com/twitter/Main.java b/src/main/java/com/twitter/Main.java
+deleted file mode 100644
+--- a/src/main/java/com/twitter/Main.java	(revision 8fe266e66ce39ff2e78dd1157e29405a824ef30a)
++++ /dev/null	(revision 8fe266e66ce39ff2e78dd1157e29405a824ef30a)
+@@ -1,7 +0,0 @@
+-package com.twitter;
+-
+-public class Main {
+-    public static void main(String[] args) {
+-        System.out.println("Hello world!");
+-    }
+-}
+\ No newline at end of file
+Index: src/main/java/com/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/Main.java b/src/main/java/com/example/Main.java
+new file mode 100644
+--- /dev/null	(date 1728893752699)
++++ b/src/main/java/com/example/Main.java	(date 1728893752699)
+@@ -0,0 +1,32 @@
++package com.example;
++
++import java.io.BufferedReader;
++import java.io.File;
++import java.io.FileReader;
++import java.net.URI;
++import java.net.URISyntaxException;
++import java.net.http.HttpRequest;
++
++import com.fasterxml.jackson.core.type.TypeReference;
++import com.fasterxml.jackson.databind.JsonNode;
++import com.fasterxml.jackson.databind.ObjectMapper;
++
++public class Main {
++    private static HttpRequest fetchUserData(String username, int numberOfEventsToDisplay) {
++        HttpRequest request = null;
++        try {
++            request = HttpRequest.newBuilder()
++                    .uri(new URI("https://api.github.com/users/" + username + "/events?per_page=" + numberOfEventsToDisplay))
++                    .GET()
++                    .build();
++        }
++        catch (URISyntaxException e) {
++            e.printStackTrace();
++        }
++        return request;
++    }
++
++    public static void main(String[] args) {
++
++    }
++}
+\ No newline at end of file
